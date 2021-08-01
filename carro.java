@@ -44,7 +44,7 @@ public class carro extends Actor
         Actor collided = getOneIntersectingObject(basura.class);
         if(collided != null){
             getWorld().removeObject(this);
-            Greenfoot.stop();
+            Greenfoot.setWorld(new GameOver());
         }
     }
     
