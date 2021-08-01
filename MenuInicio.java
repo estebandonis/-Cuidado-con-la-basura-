@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MenuInicio extends World
 {
-
+    private GreenfootSound sonidoMenuInicio;
     /**
      * Constructor for objects of class MenuInicio.
      * 
@@ -20,12 +20,16 @@ public class MenuInicio extends World
         
         LetrasInicio letras = new LetrasInicio();
         addObject(letras, 300, 200);
+        
+        sonidoMenuInicio = new GreenfootSound("Fluidity.mp3");
+        sonidoMenuInicio.play();
     }
     
     public void act()
     {
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new MyWorld());
+            sonidoMenuInicio.stop();
         }
     }
 }

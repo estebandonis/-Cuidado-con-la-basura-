@@ -8,16 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    
+    private carro esteban;
     private contador score;
     private contador level;
+    private arbol tree1;
+    private arbol tree2;
     
     private int velocidad_carro;
     private int num_adelantamientos;
     private int num_adelantamientos_nivel;
-    private carro esteban;
     private int num_rivales;
+    private int num_arboles;
     
+    public GreenfootSound sonidoMyWorld = new GreenfootSound("FutureBass.mp3");
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -35,15 +38,26 @@ public class MyWorld extends World
         level = new contador("Level: ");
         level.add(1);
         esteban = new carro(velocidad_carro);
+        tree1 = new arbol(velocidad_carro);
+        tree2 = new arbol(velocidad_carro);
+        
+        int carril1 = getRandomNumber(50, 300);
+        int carril2 = getRandomNumber(50, 300);
+        num_arboles = 2;
         
         addObject(esteban, 325, 600);
         addObject(level, 320, 60);
         addObject(score, 145, 60);
+        addObject(tree1, 17, carril1);
+        addObject(tree2, 390, carril2);
+        
+        sonidoMyWorld.play();
     }
     
     public void act(){
         aumentar_dificultad();
         add_rivales();
+        add_arboles();
     }
     
     public int getRandomNumber(int start,int end){
@@ -63,6 +77,9 @@ public class MyWorld extends World
         num_rivales--;
     }
     
+    public void disminuir_num_arboles(){
+        num_arboles--;
+    }
     
     public void aumentar_dificultad(){
         if(num_adelantamientos == num_adelantamientos_nivel){
@@ -110,6 +127,30 @@ public class MyWorld extends World
             
             
             num_rivales = 2;
+        }
+    }
+    
+    public void add_arboles(){
+        
+        if(num_arboles == 0){
+            
+            int carril = getRandomNumber(0,1);
+            
+            if(carril == 0){
+                addObject(new arbol(velocidad_carro),17, 0);
+            }
+            else{
+                addObject(new arbol(velocidad_carro),390, 0);
+            }
+            
+            if(carril == 1){
+                addObject(new arbol(velocidad_carro),17, 0);
+            }
+            else {
+                addObject(new arbol(velocidad_carro),390, 0);
+            }
+            
+            num_arboles = 2;
         }
     }
 }
