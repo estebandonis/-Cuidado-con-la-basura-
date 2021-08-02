@@ -19,8 +19,6 @@ public class MyWorld extends World
     private int num_adelantamientos_nivel;
     private int num_rivales;
     private int num_arboles;
-    
-    public GreenfootSound sonidoMyWorld = new GreenfootSound("FutureBass.mp3");
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -50,8 +48,6 @@ public class MyWorld extends World
         addObject(score, 145, 60);
         addObject(tree1, 17, carril1);
         addObject(tree2, 390, carril2);
-        
-        sonidoMyWorld.play();
     }
     
     public void act(){

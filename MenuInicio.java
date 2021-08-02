@@ -22,11 +22,11 @@ public class MenuInicio extends World
         addObject(letras, 300, 200);
         
         sonidoMenuInicio = new GreenfootSound("Fluidity.mp3");
-        sonidoMenuInicio.play();
     }
     
     public void act()
     {
+        sonidoMenuInicio.play();
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new MyWorld());
             sonidoMenuInicio.stop();
